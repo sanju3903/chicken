@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up – Tasty Chicken</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('loginpic.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: maroon;
+            padding: 18px;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+        }
+
+        .page-center {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border-radius: 14px;
+            padding: 40px 36px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        }
+
+        .card h2 {
+            text-align: center;
+            color: maroon;
+            margin-bottom: 6px;
+            font-size: 1.6rem;
+        }
+
+        .card .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            background: #fff;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: maroon;
+        }
+
+        .hint {
+            font-size: 0.78rem;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: maroon;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background-color 0.2s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: darkred;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .links a {
+            color: maroon;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 12px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .alert-box {
+            display: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .alert-error {
+            background: #fde8e8;
+            color: #c0392b;
+            border: 1px solid #f5c6c6;
+        }
+
+        .alert-success {
+            background: #e8f8e8;
+            color: #27ae60;
+            border: 1px solid #b2e0b2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🍗 Tasty Chicken</h1>
+    </header>
+
+    <div class="page-center">
+        <div class="card">
+            <h2>Create Account</h2>
+            <p class="subtitle">Join us and explore amazing chicken recipes!</p>
+
+            <div class="alert-box" id="alertBox"></div>
+
+            <form id="signupForm" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Choose a username" required>
+                    <p class="hint">This will be used to log in.</p>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Create a password" required>
+                    <p class="hint">Minimum 6 characters.</p>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Repeat your password" required>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <div class="links">
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+                <p style="margin-top:10px;"><a href="index.html">← Back to Home</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Tasty Chicken. All rights reserved. | Visakhapatnam</p>
+    </footer>
+
+    <script>
+        function showAlert(message, type) {
+            const box = document.getElementById('alertBox');
+            box.textContent = message;
+            box.className = 'alert-box alert-' + type;
+            box.style.display = 'block';
+        }
+
+        function handleSignup(e) {
+            e.preventDefault();
+
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validate password length
+            if (password.length < 6) {
+                showAlert('Password must be at least 6 characters.', 'error');
+                return;
+            }
+
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                showAlert('Passwords do not match. Please try again.', 'error');
+                return;
+            }
+
+            // Load existing users
+            const users = JSON.parse(localStorage.getItem('tastyChickenUsers') || '[]');
+
+            // Check if username already taken
+            if (users.find(u => u.username === username)) {
+                showAlert('Username already taken. Please choose another.', 'error');
+                return;
+            }
+
+            // Check if email already registered
+            if (users.find(u => u.email === email)) {
+                showAlert('An account with this email already exists.', 'error');
+                return;
+            }
+
+            // Save new user
+            users.push({ fullname, email, username, password });
+            localStorage.setItem('tastyChickenUsers', JSON.stringify(users));
+
+            showAlert('Account created successfully! Redirecting to login...', 'success');
+            setTimeout(() => { window.location.href = 'login.html'; }, 1500);
+        }
+    </script>
+</body>
+
+</html>
