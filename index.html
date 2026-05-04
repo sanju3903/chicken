@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasty Chicken</title>
     <link rel="stylesheet" href="html.css">
+    <style>
+        .user-bar {
+            display: none;
+            text-align: center;
+            background-color: #fff3f3;
+            padding: 8px;
+            font-size: 0.9rem;
+            color: #444;
+            border-bottom: 1px solid #e0b0b0;
+        }
+
+        .user-bar span {
+            font-weight: bold;
+            color: maroon;
+        }
+
+        .logout-btn {
+            margin-left: 12px;
+            padding: 4px 12px;
+            background: maroon;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .logout-btn:hover {
+            background: darkred;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,8 +45,13 @@
         <h1>Tasty Chicken!!!</h1>
     </header>
 
+    <div class="user-bar" id="userBar">
+        Welcome, <span id="loggedInName"></span>!
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
     <nav>
-        <a href="about.html">Click <u>About</u> !!! </a>
+        <a href="about.html">Click <u>About</u> !!!</a>
     </nav>
 
     <main>
@@ -35,10 +70,23 @@
 
     <footer>
         <p>© 2025 Tasty Chicken. All rights reserved.</p>
-        <p>Vishakapatnam</p>
+        <p>Visakhapatnam</p>
     </footer>
 
     <script src="chi.js"></script>
+    <script>
+        // Show logged-in user info if session exists
+        const session = JSON.parse(localStorage.getItem('tastyChickenSession') || 'null');
+        if (session) {
+            document.getElementById('userBar').style.display = 'block';
+            document.getElementById('loggedInName').textContent = session.username;
+        }
+
+        function logout() {
+            localStorage.removeItem('tastyChickenSession');
+            window.location.reload();
+        }
+    </script>
 </body>
 
 </html>
