@@ -1,54 +1,155 @@
-<a href="index.html"></a>
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-    header {
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About – Tasty Chicken</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        padding: 40px;
-        text-align: center;
-        color: black;
-        font-style: italic;
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('loginpic.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-    }
+        header {
+            background-color: maroon;
+            padding: 18px;
+            text-align: center;
+            color: white;
+        }
 
-    .auth-section {
-        background-color: rgba(255, 255, 255, 0.8);
-        width: 30%;
-        margin: auto;
-        padding: 20px;
-        height: 50%;
-        text-align: center;
-        color: black;
-        text-decoration: aqua;
+        header h1 {
+            font-size: 1.6rem;
+        }
 
-    }
+        .page-center {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
 
-    body {
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        color: black;
-        background-image: url(loginpic.jpg)
-    }
-</style>
-<header>
-    <h1>Chicken &hearts;&Hacek;</h1>
-</header>
-<br>
-<br>
-<br>
-<div class="auth-section">
-    <h2>Login or Sign Up</h2>
-    <form action="login.html" method="post">
-        <label for="username">Username:</label> <br><br>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <br>
-        <label for="password">Password:</label>
-        <br><br>
-        <input type="password" id="password" name="password" required>
-        <br><br>
-        <button type="submit">Login</button>
-        <br><br>
-    </form>
-    <p>Don't have an account? <a href="signup.html">Sign up here</a>.</p>
-</div>
+        .card {
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border-radius: 14px;
+            padding: 40px 36px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        .card h2 {
+            color: maroon;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #555;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            display: block;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary {
+            background-color: maroon;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: darkred;
+        }
+
+        .btn-outline {
+            background-color: white;
+            color: maroon;
+            border: 2px solid maroon;
+        }
+
+        .btn-outline:hover {
+            background-color: #fde8e8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: maroon;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 12px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🍗 Tasty Chicken</h1>
+    </header>
+
+    <div class="page-center">
+        <div class="card">
+            <h2>Chicken ♥</h2>
+            <p>
+                Welcome to Tasty Chicken — your go-to place for the most delicious
+                chicken recipes! Login or create an account to unlock exclusive recipes
+                and save your favourites.
+            </p>
+
+            <div class="btn-group">
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <a href="signup.html" class="btn btn-outline">Sign Up</a>
+            </div>
+
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Tasty Chicken. All rights reserved. | Visakhapatnam</p>
+    </footer>
+
+</body>
+
+</html>
